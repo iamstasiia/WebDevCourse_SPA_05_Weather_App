@@ -1,6 +1,7 @@
 import { fetchWeatherData } from "./functions/fetchWeatherData.func.js";
 import { getCurrentDate } from "./functions/getCurrentDate.func.js";
 import HeaderComponent from "./components/header/Header.comp.jsx";
+import MainComponent from "./components/main/Main.comp.jsx";
 import FooterComponent from "./components/footer/Footer.comp.jsx";
 import "./App.scss";
 import { useState, useEffect } from "react";
@@ -37,10 +38,11 @@ function App() {
 }, [location]);
 
     return (
-        <>
+        <div className="app-container">
             <HeaderComponent setLocation={setLocation} weatherData={weatherData} currentDate={currentDate} />
+            <MainComponent weatherData={weatherData} />
             <FooterComponent />
-        </>
+        </div>
     );
 }
 
