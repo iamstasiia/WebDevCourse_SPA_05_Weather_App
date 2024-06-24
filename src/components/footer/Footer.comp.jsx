@@ -1,4 +1,5 @@
 import { currentYear } from "../../functions/currentYear.func.js";
+import './Footer.style.scss'
 
 const FooterComponent = () => {
     return (
