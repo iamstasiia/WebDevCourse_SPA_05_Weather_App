@@ -5,17 +5,21 @@ import MainComponent from "./components/main/Main.comp.jsx";
 import FooterComponent from "./components/footer/Footer.comp.jsx";
 import "./App.scss";
 import { useState, useEffect } from "react";
+import { getWeatherImage } from "./functions/weatherCodeDescription.func.js";
 
 function App() {
   const [location, setLocation] = useState('Kyiv');
   const [weatherData, setWeatherData] = useState(null);
   const [currentDate, setCurrentDate] = useState(null);
+  const [backImage, setBackImage] = useState('Default');
 
   useEffect(() => {
     const fetchData = async () => {
       try {
           const weather = await fetchWeatherData(location);
           setWeatherData(weather);
+          const image = getWeatherImage(weather.list[0].weather[0].id);
+          setBackImage(image);
       } catch (error) {
           console.error("Error fetching weather data:", error);
       }
@@ -38,7 +42,7 @@ function App() {
 }, [location]);
 
     return (
-        <div className="app-container">
+        <div className="app-container" style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url(${backImage})`}}>
             <HeaderComponent setLocation={setLocation} weatherData={weatherData} currentDate={currentDate} />
             <MainComponent weatherData={weatherData} />
             <FooterComponent />

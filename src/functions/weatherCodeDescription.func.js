@@ -1,10 +1,13 @@
-import Default from "../assets/images/3837.jpg";
-import Sunny from "../assets/images/3837.jpg";
-import Cloudy from "../assets/images/3837.jpg";
-import Foggy from "../assets/images/3837.jpg";
-import Rainy from "../assets/images/3837.jpg";
-import Snow from "../assets/images/3837.jpg";
-import Thunderstorm from "../assets/images/3837.jpg";
+import Default from "../assets/images/cloudy.jpg";
+import Sunny from "../assets/images/sunny.jpg";
+import Cloudy25 from "../assets/images/2148824924.jpg";
+import Cloudy50 from "../assets/images/cloudy.jpg";
+import Cloudy85 from "../assets/images/2148824918.jpg";
+import Cloudy100 from "../assets/images/2380.jpg";
+import Foggy from "../assets/images/foggy.jpg";
+import Rainy from "../assets/images/4399.jpg";
+import Snow from "../assets/images/snow.jpg";
+import Thunderstorm from "../assets/images/thunderstorm.jpg";
 import {
     faCloud,
     faCloudBolt,
@@ -370,29 +373,29 @@ const weatherCodeDescription = {
     },
     801: {
         name: "Clouds",
-        description: "few clouds: 11-25%",
-        image: Cloudy,
+        description: "few clouds: 10-25%",
+        image: Cloudy25,
         // icon: "fa-solid fa-cloud-sun",
         icon: faCloudSun,
     },
     802: {
         name: "Clouds",
         description: "few clouds: 25-50%",
-        image: Cloudy,
+        image: Cloudy50,
         // icon: "fa-solid fa-cloud-sun",
         icon: faCloudSun,
     },
     803: {
         name: "Clouds",
         description: "few clouds: 50-85%",
-        image: Cloudy,
+        image: Cloudy85,
         // icon: "fa-solid fa-cloud",
         icon: faCloud,
     },
     804: {
         name: "Clouds",
         description: "few clouds: 85-100%",
-        image: Cloudy,
+        image: Cloudy100,
         // icon: "fa-solid fa-cloud",
         icon: faCloud,
     },
@@ -407,7 +410,10 @@ export const getWeatherDescription = (weatherCode) => {
 };
 
 export const getWeatherImage = (weatherCode) => {
-    return weatherCodeDescription[weatherCode].image || Default;
+    return (
+        weatherCodeDescription[weatherCode].image ||
+        weatherCodeDescription[0].image
+    );
 };
 
 export const getWeatherIcon = (weatherCode) => {
