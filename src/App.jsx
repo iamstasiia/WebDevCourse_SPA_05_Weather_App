@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 import { getWeatherImage } from "./functions/weatherCodeDescription.func.js";
 
 function App() {
-  const [location, setLocation] = useState('Kyiv');
+  const [location, setLocation] = useState('Düsseldorf');
   const [weatherData, setWeatherData] = useState(null);
   const [currentDate, setCurrentDate] = useState(null);
   const [backImage, setBackImage] = useState('Default');
