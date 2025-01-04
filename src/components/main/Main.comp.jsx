@@ -1,8 +1,8 @@
 import TempComponent from "./Temp.comp.jsx";
 import InfoComponent from "./Info.comp.jsx";
-import HoursComponent from "./Hours.comp.jsx";
-import WeekComponent from "./Week.comp.jsx";
-import './Main.style.scss'
+import ForecastComponent from "./Forecast.comp.jsx";
+import PropTypes from "prop-types";
+import "./Main.style.scss";
 
 const MainComponent = ({ weatherData }) => {
     if (!weatherData || !weatherData.list) {
@@ -11,12 +11,18 @@ const MainComponent = ({ weatherData }) => {
 
     return (
         <main>
-            <TempComponent weatherData={weatherData} />
-            <InfoComponent weatherData={weatherData} />
-            <HoursComponent weatherData={weatherData} />
-            <WeekComponent weatherData={weatherData} />
+            <div className="current-weather-container">
+                <TempComponent weatherData={weatherData} />
+                <div className="dividing-line"></div>
+                <InfoComponent weatherData={weatherData} />
+            </div>
+            <ForecastComponent weatherData={weatherData} />
         </main>
     );
+};
+
+MainComponent.propTypes = {
+    weatherData: PropTypes.object,
 };
 
 export default MainComponent;
