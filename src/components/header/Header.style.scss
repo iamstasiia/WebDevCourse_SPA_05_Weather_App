@@ -121,13 +121,13 @@ header {
                 cursor: pointer;
                 color: var(--text-color);
                 font-size: 2rem;
+                -webkit-tap-highlight-color: transparent;
                 transition: all 0.5s ease;
 
                 &:hover {
                     color: var(--accent-color);
                 }
 
-                &:active,
                 &:focus {
                     color: var(--text-color);
                 }
