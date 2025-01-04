@@ -1,8 +1,8 @@
 import { getWeatherIcon } from "../../functions/weatherCodeDescription.func.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import PropTypes from "prop-types";
 
 const TempComponent = ({ weatherData }) => {
-
     const temperature = weatherData.list[0].main.temp;
     const weatherCode = weatherData.list[0].weather[0].id;
     const weatherName = weatherData.list[0].weather[0].main;
@@ -18,6 +18,10 @@ const TempComponent = ({ weatherData }) => {
             </div>
         </section>
     );
+};
+
+TempComponent.propTypes = {
+    weatherData: PropTypes.object,
 };
 
 export default TempComponent;
