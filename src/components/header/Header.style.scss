@@ -126,6 +126,11 @@ header {
                 &:hover {
                     color: var(--accent-color);
                 }
+
+                &:active,
+                &:focus {
+                    color: var(--text-color);
+                }
             }
         }
 
