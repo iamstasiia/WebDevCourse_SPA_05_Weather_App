@@ -1,8 +1,8 @@
 import { getWeatherIcon } from "../../functions/weatherCodeDescription.func.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import PropTypes from "prop-types";
 
 const HoursComponent = ({ weatherData }) => {
-
     const hours = weatherData.list;
     const weatherCode = weatherData.list[0].weather[0].id;
 
@@ -12,7 +12,7 @@ const HoursComponent = ({ weatherData }) => {
     }
 
     return (
-        <div className="hours-container">
+        <div className="hours-group">
             {hoursArray.map((hour, index) => (
                 <div key={index}>
                     <h3>{new Date(hour.dt_txt).getHours()}:00</h3>
@@ -22,6 +22,10 @@ const HoursComponent = ({ weatherData }) => {
             ))}
         </div>
     );
+};
+
+HoursComponent.propTypes = {
+    weatherData: PropTypes.object,
 };
 
 export default HoursComponent;

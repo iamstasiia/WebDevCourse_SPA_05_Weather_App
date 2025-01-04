@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import { getWeatherIcon } from "../../functions/weatherCodeDescription.func.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import HoursComponent from "./Hours.comp.jsx";
+import PropTypes from "prop-types";
 
-const WeekComponent = ({ weatherData }) => {
-    
+const ForecastComponent = ({ weatherData }) => {
     const hours = weatherData.list;
     const weatherCode = weatherData.list[0].weather[0].id;
 
@@ -46,26 +47,18 @@ const WeekComponent = ({ weatherData }) => {
     }, [hours]);
 
     const dayOfWeek = (dateString) => {
-        const daysOfWeek = [
-            "Sunday",
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday",
-            "Saturday",
-        ];
+        const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         const date = new Date(dateString);
         const dayIndex = date.getDay();
         return daysOfWeek[dayIndex];
     };
 
     return (
-        <div className="week-container">
-            <button onClick={() => setHiddenList(!hiddenList)}>
-                <FontAwesomeIcon icon={faChevronDown} />
+        <div className="forecast-container">
+            <button className="chevron-down-btn" onClick={() => setHiddenList(!hiddenList)}>
+                <FontAwesomeIcon icon={faChevronDown} className={hiddenList ? "btn-down" : "btn-up"} />
             </button>
-            <div className={hiddenList ? "hidden-list" : "show-list"}>
+            <div className={`week-group ${hiddenList ? "hidden-list" : "show-list"}`}>
                 {filteredData.map((day, index) => (
                     <div key={index}>
                         <h3>{index === 0 ? "Today" : dayOfWeek(day.date)}</h3>
@@ -77,8 +70,13 @@ const WeekComponent = ({ weatherData }) => {
                     </div>
                 ))}
             </div>
+            <HoursComponent weatherData={weatherData} />
         </div>
     );
 };
 
-export default WeekComponent;
+ForecastComponent.propTypes = {
+    weatherData: PropTypes.object,
+};
+
+export default ForecastComponent;
