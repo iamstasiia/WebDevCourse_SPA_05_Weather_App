@@ -129,6 +129,11 @@ header {
                 }
 
                 &:focus {
+                    outline: none;
+                    color: var(--text-color);
+                }
+
+                &:active {
                     color: var(--text-color);
                 }
             }
