@@ -161,13 +161,29 @@ header {
 }
 
 @media (max-width: 800px) {
-    header .search-container form label:hover {
-        color: var(--text-color);
+    header {
+        .logo h1 {
+            font-weight: 600;
+        }
+
+        .city-container div h1 {
+            font-weight: 600;
+        }
+
+        .search-container form label:hover {
+            color: var(--text-color);
+        }
     }
 }
 
 @media (max-width: 600px) {
-    header .city-container div h1 {
-        font-size: 1.75rem;
+    header {
+        .logo {
+            padding-bottom: 2.5rem;
+        }
+
+        .city-container div h1 {
+            font-size: 1.75rem;
+        }
     }
 }
