@@ -184,3 +184,15 @@ main {
         background-position: 0% 0%;
     }
 }
+
+@media (max-width: 800px) {
+    main .forecast-container {
+        .week-group,
+        .hours-group {
+            div h3,
+            div p {
+                font-weight: 400;
+            }
+        }
+    }
+}
